@@ -16,13 +16,13 @@ export function PlanningView() {
   };
 
   return (
-    <div className="h-full flex flex-col bg-background-elevated text-foreground p-4 md:p-6 text-[10px] md:text-xs">
-      <div className="flex items-center justify-between mb-4">
+    <div className="h-full flex flex-col bg-background-elevated text-foreground p-3 md:p-6 text-[10px] md:text-xs">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3 md:mb-4">
         <div>
-          <h3 className="text-base md:text-xl font-bold">Planning · Maggio 2026</h3>
-          <p className="text-muted-foreground mt-0.5">Calendario unificato — sincronizzato con Booking, Airbnb, Expedia</p>
+          <h3 className="text-sm md:text-xl font-bold">Planning · Mag 2026</h3>
+          <p className="text-muted-foreground mt-0.5 text-[9px] md:text-xs">Sincronizzato con Booking, Airbnb, Expedia</p>
         </div>
-        <div className="flex items-center gap-3 text-[9px] md:text-[10px]">
+        <div className="flex items-center gap-2 md:gap-3 text-[9px] md:text-[10px] flex-wrap">
           <Legend c="bg-violet-500" l="Booking" />
           <Legend c="bg-rose-500" l="Airbnb" />
           <Legend c="bg-amber-400" l="Expedia" />
@@ -31,19 +31,23 @@ export function PlanningView() {
       </div>
 
       <div className="rounded-xl border border-border overflow-hidden flex-1 min-h-0 flex flex-col">
-        <div className="grid grid-cols-[100px_repeat(14,1fr)] text-center text-[9px] md:text-[10px] bg-muted/40 border-b border-border">
-          <div className="py-2 text-left pl-3 text-muted-foreground font-semibold">Unità</div>
-          {days.map((d) => (
-            <div key={d} className="py-2 text-muted-foreground font-semibold border-l border-border">{d}</div>
-          ))}
-        </div>
-        <div className="flex-1 overflow-y-auto">
-          {rooms.map((room) => (
-            <div key={room} className="grid grid-cols-[100px_repeat(14,1fr)] border-b border-border last:border-0 items-stretch">
-              <div className="py-2 pl-3 text-muted-foreground text-[10px] font-medium flex items-center">{room}</div>
-              <RoomRow bars={bars[room] || []} />
+        <div className="overflow-x-auto flex-1 flex flex-col">
+          <div className="min-w-[640px] md:min-w-0 flex flex-col flex-1">
+            <div className="grid grid-cols-[80px_repeat(14,1fr)] md:grid-cols-[100px_repeat(14,1fr)] text-center text-[9px] md:text-[10px] bg-muted/40 border-b border-border">
+              <div className="py-2 text-left pl-3 text-muted-foreground font-semibold">Unità</div>
+              {days.map((d) => (
+                <div key={d} className="py-2 text-muted-foreground font-semibold border-l border-border">{d}</div>
+              ))}
             </div>
-          ))}
+            <div className="flex-1 overflow-y-auto">
+              {rooms.map((room) => (
+                <div key={room} className="grid grid-cols-[80px_repeat(14,1fr)] md:grid-cols-[100px_repeat(14,1fr)] border-b border-border last:border-0 items-stretch">
+                  <div className="py-2 pl-3 text-muted-foreground text-[10px] font-medium flex items-center">{room}</div>
+                  <RoomRow bars={bars[room] || []} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -93,21 +97,21 @@ export function ComplianceView() {
   ];
 
   return (
-    <div className="h-full flex flex-col bg-background-elevated text-foreground p-4 md:p-6 text-[10px] md:text-xs gap-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-base md:text-xl font-bold flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-emerald-500" /> Compliance · Polizia di Stato
+    <div className="h-full flex flex-col bg-background-elevated text-foreground p-3 md:p-6 text-[10px] md:text-xs gap-3 md:gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div className="min-w-0">
+          <h3 className="text-sm md:text-xl font-bold flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-emerald-500 shrink-0" /> <span className="truncate">Compliance · Polizia di Stato</span>
           </h3>
-          <p className="text-muted-foreground mt-0.5">Invio automatico schedine · ISTAT · Tassa di soggiorno</p>
+          <p className="text-muted-foreground mt-0.5 text-[9px] md:text-xs">Schedine · ISTAT · Tassa di soggiorno</p>
         </div>
-        <button className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">
+        <button className="self-start inline-flex items-center gap-1.5 h-7 md:h-8 px-3 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">
           <Send className="h-3 w-3" /> Invia ora
         </button>
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-3">
         {[
           { label: "Schedine inviate (mese)", value: "247", sub: "100% conforme", color: "from-emerald-500 to-emerald-400" },
           { label: "ISTAT compilato", value: "Aprile ✓", sub: "Maggio in corso", color: "from-violet-500 to-violet-400" },
@@ -126,31 +130,35 @@ export function ComplianceView() {
 
       {/* Table */}
       <div className="rounded-xl border border-border overflow-hidden flex-1 min-h-0 flex flex-col">
-        <div className="grid grid-cols-[1fr_1.5fr_0.6fr_0.6fr_0.7fr] py-2 px-3 bg-muted/40 border-b border-border text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">
-          <span>Data check-in</span>
-          <span>Ospite</span>
-          <span>Camera</span>
-          <span>Provenienza</span>
-          <span>Stato</span>
-        </div>
-        <div className="flex-1 overflow-y-auto">
-          {submissions.map((s, i) => (
-            <div key={i} className="grid grid-cols-[1fr_1.5fr_0.6fr_0.6fr_0.7fr] py-2.5 px-3 border-b border-border last:border-0 items-center">
-              <span className="text-muted-foreground">{s.date}</span>
-              <span className="font-medium">{s.guest}</span>
-              <span>{s.room}</span>
-              <span>{s.country}</span>
-              <span>
-                {s.status === "ok" ? (
-                  <span className="inline-flex items-center gap-1 text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-semibold">
-                    <Check className="h-2.5 w-2.5" /> Inviato
-                  </span>
-                ) : (
-                  <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-semibold">In coda</span>
-                )}
-              </span>
+        <div className="overflow-x-auto flex-1">
+          <div className="min-w-[520px] md:min-w-full h-full flex flex-col">
+            <div className="grid grid-cols-[1fr_1.5fr_0.6fr_0.6fr_0.7fr] py-2 px-3 bg-muted/40 border-b border-border text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">
+              <span>Data check-in</span>
+              <span>Ospite</span>
+              <span>Camera</span>
+              <span>Provenienza</span>
+              <span>Stato</span>
             </div>
-          ))}
+            <div className="flex-1 overflow-y-auto">
+              {submissions.map((s, i) => (
+                <div key={i} className="grid grid-cols-[1fr_1.5fr_0.6fr_0.6fr_0.7fr] py-2.5 px-3 border-b border-border last:border-0 items-center">
+                  <span className="text-muted-foreground">{s.date}</span>
+                  <span className="font-medium">{s.guest}</span>
+                  <span>{s.room}</span>
+                  <span>{s.country}</span>
+                  <span>
+                    {s.status === "ok" ? (
+                      <span className="inline-flex items-center gap-1 text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-semibold">
+                        <Check className="h-2.5 w-2.5" /> Inviato
+                      </span>
+                    ) : (
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-semibold">In coda</span>
+                    )}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -170,19 +178,19 @@ export function FinanceView() {
   const cost = [4, 5, 6, 7, 8];
 
   return (
-    <div className="h-full flex flex-col bg-background-elevated text-foreground p-4 md:p-6 text-[10px] md:text-xs gap-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-base md:text-xl font-bold">Finanze</h3>
-          <p className="text-muted-foreground mt-0.5">Spese per camera e struttura · Marginalità reale</p>
+    <div className="h-full flex flex-col bg-background-elevated text-foreground p-3 md:p-6 text-[10px] md:text-xs gap-3 md:gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div className="min-w-0">
+          <h3 className="text-sm md:text-xl font-bold">Finanze</h3>
+          <p className="text-muted-foreground mt-0.5 text-[9px] md:text-xs">Spese per camera · Marginalità reale</p>
         </div>
-        <button className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg bg-violet-600 text-white hover:bg-violet-700">
+        <button className="self-start inline-flex items-center gap-1.5 h-7 md:h-8 px-3 rounded-lg bg-violet-600 text-white hover:bg-violet-700">
           <FileSpreadsheet className="h-3 w-3" /> Export CSV
         </button>
       </div>
 
       {/* KPI */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 md:gap-3">
         {[
           { label: "Ricavi (YTD)", value: "€ 92.430", delta: "+24%", icon: ArrowUpRight, color: "text-emerald-500" },
           { label: "Spese (YTD)", value: "€ 28.110", delta: "+8%", icon: Receipt, color: "text-amber-500" },
@@ -199,9 +207,9 @@ export function FinanceView() {
         ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-3 flex-1 min-h-0">
+      <div className="grid grid-cols-12 gap-2 md:gap-3 flex-1 min-h-0">
         {/* Bar chart */}
-        <div className="col-span-12 lg:col-span-7 rounded-xl border border-border p-4 flex flex-col">
+        <div className="col-span-12 lg:col-span-7 rounded-xl border border-border p-3 md:p-4 flex flex-col min-h-[180px]">
           <div className="font-semibold mb-2">Ricavi vs Spese · 2026</div>
           <div className="flex-1 flex items-end gap-2 md:gap-4">
             {months.map((m, i) => {

@@ -59,8 +59,8 @@ export function ShowcaseSection() {
         {/* Showcase frame */}
         <div className="relative">
           <div className="absolute -inset-x-10 -inset-y-6 bg-gradient-to-br from-primary/10 via-transparent to-violet-500/10 blur-3xl -z-10" />
-          <div className="relative rounded-[28px] border-4 border-[#6C6C6C] dark:border-[#2a2a35] bg-[#222] dark:bg-[#0d0d14] p-2 md:p-4 shadow-2xl">
-            <div className="rounded-2xl overflow-hidden h-[480px] md:h-[640px] bg-background-elevated">
+          <div className="relative rounded-[20px] md:rounded-[28px] border-2 md:border-4 border-[#6C6C6C] dark:border-[#2a2a35] bg-[#222] dark:bg-[#0d0d14] p-1.5 md:p-4 shadow-2xl">
+            <div className="rounded-xl md:rounded-2xl overflow-hidden h-[560px] md:h-[640px] bg-background-elevated">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}

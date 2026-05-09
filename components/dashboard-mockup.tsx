@@ -74,7 +74,7 @@ const roomStatus = [
 
 export function DashboardMockup({ greeting = "Buongiorno" }: { greeting?: string }) {
   return (
-    <div className="h-full w-full grid grid-cols-[210px_1fr] bg-background-elevated text-foreground rounded-xl overflow-hidden text-[10px] md:text-xs font-medium">
+    <div className="h-full w-full grid grid-cols-1 md:grid-cols-[210px_1fr] bg-background-elevated text-foreground rounded-xl overflow-hidden text-[10px] md:text-xs font-medium">
       {/* Sidebar */}
       <aside className="hidden md:flex flex-col border-r border-border bg-background py-4 px-3 gap-4 overflow-hidden">
         <div className="flex items-center gap-2.5 px-2">
@@ -113,17 +113,17 @@ export function DashboardMockup({ greeting = "Buongiorno" }: { greeting?: string
       {/* Main */}
       <main className="flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-start justify-between p-4 md:p-5 border-b border-border">
-          <div>
-            <h2 className="text-lg md:text-2xl font-bold tracking-tight">{greeting}</h2>
-            <p className="text-muted-foreground mt-0.5">Panoramica di oggi · Sabato 9 Maggio 2026</p>
+        <div className="flex items-start justify-between gap-2 p-3 md:p-5 border-b border-border">
+          <div className="min-w-0 flex-1">
+            <h2 className="text-base md:text-2xl font-bold tracking-tight truncate">{greeting}</h2>
+            <p className="text-muted-foreground mt-0.5 text-[9px] md:text-xs">Panoramica · Sab 9 Mag 2026</p>
           </div>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 shrink-0">
             <button className="hidden md:inline-flex items-center gap-1.5 h-8 px-3 rounded-lg border border-border bg-background hover:bg-muted">
               <Download className="h-3 w-3" /> Report
             </button>
-            <button className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg bg-violet-600 text-white hover:bg-violet-700">
-              <Plus className="h-3 w-3" /> Nuova prenotazione
+            <button className="inline-flex items-center gap-1 h-7 md:h-8 px-2 md:px-3 rounded-lg bg-violet-600 text-white hover:bg-violet-700">
+              <Plus className="h-3 w-3" /> <span className="hidden sm:inline">Nuova prenotazione</span><span className="sm:hidden">Nuova</span>
             </button>
           </div>
         </div>

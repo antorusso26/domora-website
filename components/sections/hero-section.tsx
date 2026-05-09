@@ -25,11 +25,11 @@ export function HeroSection() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
               Channel manager italiano · pensato per host indipendenti
             </span>
-            <h1 className="text-4xl md:text-7xl font-semibold tracking-tight leading-[1.05]">
-              Tutto il tuo extralberghiero <br />
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-[1.1] md:leading-[1.05] px-2">
+              Tutto il tuo extralberghiero <br className="hidden sm:block" />
               <span className="text-gradient-primary">in un unico gestionale.</span>
             </h1>
-            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
               Channel manager, prezzi competitor, check-in automatico, Alloggiati Web,
               ISTAT, tassa di soggiorno, housekeeping, AI receptionist. Tutto in DOMORA.
             </p>
