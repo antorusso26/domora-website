@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/sections/hero-section";
 import { LogosSection } from "@/components/sections/logos-section";
 import { FeaturesSection } from "@/components/sections/features-section";
+import { ShowcaseSection } from "@/components/sections/showcase-section";
 import { AiSection } from "@/components/sections/ai-section";
 import { PricingSection } from "@/components/sections/pricing-section";
 import { CtaSection } from "@/components/sections/cta-section";
@@ -16,6 +17,7 @@ export default function Home() {
         <HeroSection />
         <LogosSection />
         <FeaturesSection />
+        <ShowcaseSection />
         <AiSection />
         <PricingSection />
         <CtaSection />
